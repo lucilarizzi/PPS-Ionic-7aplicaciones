@@ -1,0 +1,76 @@
+<!-- <ion-content *ngIf="splash" class="fadeIn" color="dark">
+    <lottie-animation-view id="animacion" [options]="lottieConfig">
+    </lottie-animation-view>
+</ion-content> -->
+
+
+<ion-content *ngIf="mostrarLogIn" color="dark">
+    <ion-content color="dark" class="fadeIn">
+        <form #form="ngForm" (ngSubmit)="register(form)">
+            <ion-grid class="mt-3">
+                <ion-row justify-content-center justify-content-end>
+                    <ion-col class="col-md-2 col-sm-1 col-xs-1"></ion-col>
+                    <ion-col class="col-md-8 col-sm-10 col-xs-10">
+                        <ion-row justify-content-center justify-content-end>
+                            <ion-col class="col-md-12 col-sm-6 col-xs-6" justify-content-center>
+                                <div id="logoAmarillo" class="mt-3">
+                                    <img id="luloop" src="../../assets/logo-19.png">
+
+
+                                </div>
+                            </ion-col>
+                            <ion-col class="col-md-12 col-sm-6 col-xs-6">
+                                <div padding justify-content-end class="mt-3">
+                                    <ion-item>
+                                        <ion-input type="text" placeholder="Usuario " name="username " [(ngModel)]="miUsuario.email " required></ion-input>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-input type="text " placeholder="Password" name="psw" [(ngModel)]="miUsuario.clave" required></ion-input>
+                                    </ion-item>
+                                </div>
+                                <div class="botones" style="align-content: center">
+                                    <ion-item text-center>
+                                        <ion-button class="animated bounce delay-1s" text-center color="secondary" Primarytype="button" mdbWavesEffect item-content (click)="onLogin()">Entrar</ion-button>
+                                        <ion-button class="animated bounce delay-2s" text-center color="success" Primarytype="button" mdbWavesEffect item-content (click)="nuevoUsuario()">Registrase</ion-button>
+                                        <!--  <ion-icon name="logo-google" (click)="google()"></ion-icon> -->
+                                    </ion-item>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col class="col-md-2 col-sm-1 col-xs-10"></ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+        <div class="login-container22">
+            <ion-fab vertical="bottom" type="small" horizontal="start" slot="fixed">
+                <ion-fab-button color="success">
+                    <ion-icon name="logo-octocat"></ion-icon>
+                </ion-fab-button>
+
+                <ion-fab-list side="end">
+                    <ion-fab-button color="light">
+                        <ion-icon name="logo-octocat" id="gato" (click)="usuarioElegido('m')">
+                        </ion-icon>
+
+                    </ion-fab-button>
+
+                    <ion-fab-button>
+                        <ion-icon name="outlet" id="robot" (click)="usuarioElegido('b')"></ion-icon>
+
+                    </ion-fab-button>
+
+                    <ion-fab-button>
+                        <ion-icon name="star" id="estrella" (click)="usuarioElegido('a')"></ion-icon>
+
+                    </ion-fab-button>
+                </ion-fab-list>
+            </ion-fab>
+        </div>
+
+        <p *ngIf="error"> Clave Incorrecta</p>
+
+    </ion-content>
+
+
+</ion-content>

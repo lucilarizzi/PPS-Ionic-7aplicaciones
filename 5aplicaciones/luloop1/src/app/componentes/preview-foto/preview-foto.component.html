@@ -1,0 +1,18 @@
+<ion-content *ngIf="foto">
+    <ion-content *ngIf="selectedFiles ">
+        <div class="card ">
+            <div class="container ">
+                <ion-row class="col " justify-content-center>
+                    <p>
+                        <ion-button color="success " expand="full " (click)=" cargarImagen() ">
+                            Cargar </ion-button>
+
+                    </p>
+                    <ion-button color="warning " expand="full " (click)="cancelar() ">Cancelar</ion-button>
+                </ion-row>
+                <img class src="{{image}} ">
+                <h4><b>{{fileName}}</b></h4>
+
+            </div>
+        </div>
+    </ion-content>

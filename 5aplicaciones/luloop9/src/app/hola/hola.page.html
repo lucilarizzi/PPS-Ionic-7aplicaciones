@@ -1,0 +1,38 @@
+<ion-content color="dark" class="fadeIn">
+    <div *ngIf="spinner" class="animated fadeOut delay-2s" style=" margin-top: 200px;align-content: center; vertical-align: middle; height: 100vh; background-color: transparent ">
+        <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="150">
+        </lottie-animation-view>
+    </div>
+    <ion-grid>
+        <ion-row justify-content-center class="botones">
+
+            <ion-col class="col-12 col-sm-5">
+                <div class="botonLind mt-3" style="align-content: center">
+                    <button class="botonLindo" (click)="abrirScanner()">
+                        <img src="../../assets/CARACREDITO-22.png" alt="">
+                    </button>
+                </div>
+            </ion-col>
+            <ion-col class="col-12 col-sm-5">
+
+                <div style="align-content: center">
+                    <div class="form-group mt-3 datosUsuario">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" class="form-control  pb-2" id="exampleInputEmail1" placeholder="{{itemsCopia.email}}" style="font-size: 15pt ;vertical-align: auto; text-align: center;" disable>
+                        <input type="text " class="form-control mt-2  pb-2 " id="exampleInputEmail1 " placeholder="Credito {{itemsCopia.credito}} " style="font-size: 15pt ;vertical-align: auto; text-align: center;" disabled>
+                        <p></p>
+                        <button type="button " class="btn btn-light form-control-inline " (click)="limpiar() ">Limpiar</button>
+                        <button type="button " class="btn btn-dark form-control-inline  " (click)="credito.auth.signOut()">Salir</button>
+                    </div>
+                </div>
+            </ion-col>
+
+
+        </ion-row>
+
+
+
+
+    </ion-grid>
+
+</ion-content>

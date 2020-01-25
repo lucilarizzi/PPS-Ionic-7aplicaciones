@@ -1,0 +1,26 @@
+img {
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.tarjetas {
+    max-width: 100px;
+    max-height: 150px;
+    display: inline;
+}
+
+.unGranDiv {
+    background-color: black;
+}
+
+ion-fab {
+    margin-bottom: 20px;
+    zoom: 0.8;
+}
+
+ion-card {
+    background-color: aquamarine;
+}

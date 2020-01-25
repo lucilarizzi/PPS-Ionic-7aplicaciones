@@ -1,0 +1,22 @@
+
+
+--------------------- 
+#ionic start ionicFirebase blank style=angular
+---------entrar a la carpeta
+#npm install @angular/fire firebase --save
+-----copiar src y resource
+ionic serve -o
+----ya deberia andar
+
+ionic cordova prepare android
+
+---------------hacer apk
+ionic cordova build android
+
+
+ionic start luloop1 blank style=angular && ionic start luloop2 blank style=angular && ionic start luloop3 blank style=angular &&  ionic start luloop4 blank style=angular && ionic start luloop5 blank style=angular 
+
+
+cd luloop1 && npm install @angular/fire firebase --save && cd .. && cd luloop2 && npm install @angular/fire firebase --save && cd .. && cd luloop3 && npm install @angular/fire firebase --save && cd .. && cd luloop4 && npm install @angular/fire firebase --save && cd .. && cd luloop5 && npm install @angular/fire firebase --save && cd .. 
+
+cd luloop1 && ionic cordova build android && cd .. && cd luloop2 && ionic cordova build android && cd .. && cd luloop3 && ionic cordova build android && cd .. && cd luloop4 && ionic cordova build android && cd .. && cd luloop5 && ionic cordova build android && cd .. 

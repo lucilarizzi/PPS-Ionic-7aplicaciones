@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-title>chat {{titulo}}</ion-title>
+
+        <ion-label (click)="auth.signOut()">Desloguear </ion-label>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+    <div class="frame">
+        <ul id="ul" class="message-list" tabindex="11">
+            <li [ngClass]="{ 'box2'  : usuario.usuario == usuarioActual,  'box'  : usuario.usuario != usuarioActual}" *ngFor="let usuario of misMensajes2">
+                <div>
+                    <h5>{{usuario.usuario}} || {{usuario.date}} </h5>
+                    <h3>{{usuario.Elmensaje}}</h3>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+
+
+<div style="padding:10px; background-color:rgb(235, 232, 232)">
+    <span class="glyphicon glyphicon-share-alt">
+        <ion-footer padding style="padding:10px; background-color: rgb(235, 232, 232)"> 
+                <input class="text form-control" placeholder="Type a message" name="mensaje" [(ngModel)]="mensaje" />
+                <ion-button text-center color="success" Primarytype="button" mdbWavesEffect item-content (click)="enviar()">Enviar
+                </ion-button>
+        </ion-footer>
+    </span>
+</div>

@@ -1,0 +1,29 @@
+ion-row {
+    --ion-grid-padding: 0px;
+    --ion-grid-width-xs: 120%;
+    --ion-grid-column-padding: 0;
+}
+
+ion-grid {
+    --ion-grid-height: 100%;
+}
+
+* {
+    margin: 0;
+}
+
+ion-col {
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.ion-color-dark {
+    --ion-color-base: black;
+    --ion-color-base-rgb: var(--ion-color-dark-rgb, 34, 36, 40) !important;
+    --ion-color-contrast: var(--ion-color-dark-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-dark-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-dark-shade, black) !important;
+    --ion-color-tint: var(--ion-color-dark-tint, black) !important;
+}

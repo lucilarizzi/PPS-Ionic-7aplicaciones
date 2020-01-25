@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar color="dark" style="max-height: 50px">
+        <ion-title>
+            <img class=" col-md-5 col-sm-4" src="../../../assets/titulo-int-11.png " (click)="cancelar() " *ngIf="lindo; else elseBlock" style="width: 60%; max-height: 40px">
+            <ng-template #elseBlock>
+                <img class=" col-md-5 col-sm-4" (click)="cancelar()" src="../../../assets/titulo-int-12.png " style="width: 60%; max-height: 40px">
+            </ng-template>
+
+            <ion-icon name="log-out" (click)="salir()" style="color: blanchedalmond; font-size: 16pt"></ion-icon>
+
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="botonera" no-bounce>
+    <div class="unGranDiv" style="height: 91vh;">
+        <ion-row style="height:50%; ">
+            <ion-col class="col-6" style="height:98%; background-color: red; color: seashell;  border-radius: 15px; ">
+                <ion-icon name="camera" style="color: white; zoom: 4;   vertical-align: auto; " (click)="camara() ">
+                </ion-icon>
+            </ion-col>
+            <ion-col class="col-6 " style="height:98%; background-color: rgb(10, 98, 104); color: seashell; border-radius: 15px; ">
+                <ion-icon name="albums" style="color: white; zoom: 4;  vertical-align: auto; " (click)="mostrarGaleria() ">
+                </ion-icon>
+            </ion-col>
+        </ion-row>
+        <ion-row style="height:50%; ">
+            <ion-col class="col-6" style="height:98%; background-color: rgb(153, 10, 117); color: seashell; border-radius: 15px; ">
+                <ion-icon name="stats" style="color: white; zoom: 4;   vertical-align: auto; " (click)="luz() ">
+                </ion-icon>
+            </ion-col>
+            <ion-col class="col-6" style="height:98%; background-color:rgb(10, 153, 41); color: seashell; border-radius: 15px; ">
+                <input type="file" name="archivo" id="archivo" (change)="detectFiles($event)" style="width: 50%">
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-content *ngIf="galeria ">
+    <app-galeria></app-galeria>
+</ion-content>
+
+<ion-content *ngIf="stats">
+    <div *ngIf="lindo; else elseBlock">
+        <app-graf-lineas> </app-graf-lineas>
+    </div>
+    <ng-template #elseBlock>
+        <app-graf-cicle></app-graf-cicle>
+    </ng-template>
+</ion-content>
+
+<ion-content *ngIf="preview">
+    <ion-content *ngIf="selectedFiles ">
+        <div class="card ">
+            <div class="container ">
+                <ion-row class="col-12 " justify-content-center>
+                    <ion-button color="success " expand="full " (click)=" cargarImagen() ">Cargar </ion-button>
+                    <ion-button color="warning " expand="full " (click)="cancelar() ">Cancelar</ion-button>
+                    <img id="imagen" src="" height="300" alt="Image preview..." src="{{image}}">
+                    <h4><b>{{image}}</b></h4>
+                </ion-row>
+
+
+            </div>
+        </div>
+    </ion-content>

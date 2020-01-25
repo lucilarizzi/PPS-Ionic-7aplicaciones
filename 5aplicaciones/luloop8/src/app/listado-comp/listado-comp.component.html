@@ -1,0 +1,14 @@
+<ion-row *ngFor="let resultado of resultados" class="ml-3">
+
+    <ion-col class="col-4">
+        <h5>
+            {{ resultado.result1}}
+        </h5>
+    </ion-col>
+    <ion-col class="col-4">
+        <h5>
+            {{ resultado.result2}}
+        </h5>
+    </ion-col>
+    <ion-col class="col-4"><img src="{{resultado.url}}" alt="" style="max-height: 30px"></ion-col>
+</ion-row>

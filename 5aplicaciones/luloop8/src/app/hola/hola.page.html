@@ -1,0 +1,23 @@
+<ion-content color="dark" class="fadeIn">
+    <div *ngIf="spinner" class="animated fadeOut delay-2s" style=" margin-top: 200px;align-content: center; vertical-align: middle; height: 100vh; background-color: transparent ">
+        <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="150">
+        </lottie-animation-view>
+    </div>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <p class="botonLindo animated bounce delay-2s">
+                <img src="../../assets/empezar-28.png" alt="">
+                <img src="../../assets/metegols-29.svg" alt="">
+            </p>
+        </ion-row>
+        <ion-row justify-content-center>
+            <div class="form-group datosUsuario">
+                <input type="text" class="form-control  pb-2" style="font-size: 15pt ;vertical-align: auto; text-align: center;" placeholder="Jugador 1" [(ngModel)]="jug1" maxlength="8">
+                <input type="text " class="form-control mt-2  pb-2 " style="font-size: 15pt ;vertical-align: auto; text-align: center; " placeholder="Jugador 2" [(ngModel)]="jug2" maxlength="8">
+                <button type="button " class="btn btn-dark form-control-inline mt-2  animated tada " (click)="listadoPartido()">Consultar Listado</button>
+                <button type="button " class="btn btn-light form-control-inline mt-2 animated tada delay-4s " (click)=" empezar() ">Empezar</button>
+            </div>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

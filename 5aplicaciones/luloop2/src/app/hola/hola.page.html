@@ -1,0 +1,19 @@
+<ion-content color="dark" class="fadeIn">
+    <div *ngIf="spinner" class="animated fadeOut delay-2s" style=" margin-top: 200px;align-content: center; vertical-align: middle; height: 100vh; background-color: transparent ">
+        <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="150">
+        </lottie-animation-view>
+    </div>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div class="botones animated zoomInUp delay-2s" style="align-content: center">
+                    <button class="botonLindo" id="botonLindo" (click)="alarma()">
+                <img id="luloop" src="../../assets/alarma-13.png">
+              </button>
+
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

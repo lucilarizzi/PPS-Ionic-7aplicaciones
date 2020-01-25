@@ -1,0 +1,224 @@
+import { Component, OnInit } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Observable, of, from } from 'rxjs';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { ArchivosFirebaseService } from 'src/app/service/archivos-firebase.service';
+import { File } from '@ionic-native/file/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+
+@Component({
+  selector: 'app-cosas-lindas',
+  templateUrl: './cosas-lindas.page.html',
+  styleUrls: ['./cosas-lindas.page.scss'],
+})
+export class CosasLindasPage implements OnInit {
+
+  currentImage: any;
+  mensaje: String;
+  misImagenes: Observable<any>;
+  misImagenes2: Array<any>;
+  mostrarChat: Boolean;
+  estadoluz: boolean;
+  captureDataUrl: string;
+  imagenEnBase64: any;
+
+  image: any = '';
+  selectedFiles: any;
+  fileName: string;
+
+
+  public mensajeArchivo = 'No hay un archivo seleccionado';
+
+  public nombreArchivo = '';
+  public URLPublica = '';
+  public porcentaje = 0;
+  public finalizado = false;
+
+  constructor(
+    private transfer: FileTransfer,
+    private imagePicker: ImagePicker,
+    private fileOpener: FileOpener, 
+    private fileChooser: FileChooser,
+    private file: File,
+    private base64: Base64,
+    private camera: Camera,
+    private flashlight: Flashlight,
+    private firebaseStorage: ArchivosFirebaseService,
+    private mediaCapture: MediaCapture) { }
+
+  ngOnInit() { }
+
+
+
+
+  luz() {
+    if (this.estadoluz) {
+      this.flashlight.switchOff()
+      this.estadoluz = false;
+    } else {
+      this.flashlight.switchOn()
+      this.estadoluz = true;
+    }
+  }
+
+
+
+  async camara() {
+  
+    var fotoData;
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    await this.camera.getPicture(options).then((imageData) => {
+     
+      console.log("imagen data " + imageData);
+      fotoData = 'data:image/jpeg;base64,' + imageData ;
+      console.info("fotoData " ,fotoData);
+
+      this.image = (<any>window).Ionic.WebView.convertFileSrc(imageData);
+
+      this.selectedFiles = this.makeFileIntoBlob(this.image);
+
+      console.log("this.seleccionado" + this.selectedFiles)
+
+      var referencia = this.firebaseStorage.referenciaCloudStorage("cosaLinda" + fotoData.name);
+       let tarea = this.firebaseStorage.tareaCloudStorage("cosaLinda" + fotoData.name, fotoData);
+
+
+
+
+    }, (err) => {
+      alert("error " + JSON.stringify(err))
+    });
+
+  }
+
+  // FILE STUFF
+  makeFileIntoBlob(_imagePath) {
+    // INSTALL PLUGIN - cordova plugin add cordova-plugin-file
+    return new Promise((resolve, reject) => {
+      let fileName = "";
+      this.file
+        .resolveLocalFilesystemUrl(_imagePath)
+        .then(fileEntry => {
+          let { name, nativeURL } = fileEntry;
+
+          // get the path..
+          let path = nativeURL.substring(0, nativeURL.lastIndexOf("/"));
+
+          fileName = name;
+
+          // we are provided the name, so now read the file into a buffer
+          return this.file.readAsArrayBuffer(path, name);
+        })
+        .then(buffer => {
+          // get the buffer and make a blob to be saved
+          let imgBlob = new Blob([buffer], {
+            type: "image/jpeg"
+          });
+          
+          // pass back blob and the name of the file for saving
+          // into fire base
+          resolve({
+            fileName,
+            imgBlob
+          });
+        })
+        .catch(e => reject(e));
+    });
+  }
+ 
+
+
+
+  camara() {
+
+    let options: CaptureImageOptions = { limit: 1 }
+    this.mediaCapture.captureImage(options)
+      .then(
+        (data: MediaFile[]) => {
+          var i, len;
+          for (i = 0, len = data.length; i < len; i += 1) {
+
+
+            console.info(data[i]);
+            console.log(data[i].fullPath);
+            console.log(data[i].name); 
+
+            this.file.resolveLocalFilesystemUrl( data[i].fullPath)
+
+            .then(() => console.log('File is opened'))
+            .catch(e => console.log('Error opening file', e));
+          }
+        },
+        (err: CaptureError) => console.error(err)
+      );
+  }
+
+  detectFiles(event) {
+      this.selectedFiles = event.target.files;
+      this.fileName = this.selectedFiles[0].name;
+      this.image = this.selectedFiles[0];
+      console.log('selectedFiles: ' + this.fileName);
+      console.info('this.image = this.selectedFiles[0]', this.image);
+  }
+
+  //Sube el archivo a Cloud Storage
+  async cargarDesdeWeb() {
+
+    let archivo = this.selectedFiles[0];
+
+    var referencia = this.firebaseStorage.referenciaCloudStorage("cosaLinda" + archivo.name);
+    console.info(this.selectedFiles[0])
+    let tarea = this.firebaseStorage.tareaCloudStorage("cosaLinda" + archivo.name, archivo);
+
+    tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+      }
+    });
+
+    console.info("ereferrencia", referencia)
+
+    await referencia.getDownloadURL().subscribe((URL) => {
+      console.log(URL)
+      this.URLPublica = URL;
+    });
+  }
+  async cargarDesdeAndroid() {
+    
+        let archivo = this.selectedFiles;
+    
+        var referencia = this.firebaseStorage.referenciaCloudStorage("cosaLinda" + archivo.name);
+        console.info(this.selectedFiles[0])
+        let tarea = this.firebaseStorage.tareaCloudStorage("cosaLinda" + archivo.name, archivo);
+    
+        tarea.percentageChanges().subscribe((porcentaje) => {
+          this.porcentaje = Math.round(porcentaje);
+          if (this.porcentaje == 100) {
+            this.finalizado = true;
+          }
+        });
+    
+        console.info("ereferrencia", referencia)
+    
+        await referencia.getDownloadURL().subscribe((URL) => {
+                console.log(URL)
+          this.URLPublica = URL;
+        });
+  }
+
+}
+
+

@@ -1,0 +1,30 @@
+<ion-app>
+    <ion-content color="dark">
+        <div *ngIf="spinner" class="animated fadeOut delay-2s" style=" margin-top: 100px;align-content: center; vertical-align: middle; height: 100vh; background-color: transparent ">
+            <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="150">
+            </lottie-animation-view>
+        </div>
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let item of itemsCopia" class="col-12">
+                    <ion-card class="tarjetas">
+                        <div>
+                            <ion-fab bottom right edge>
+                                <ion-fab-button top right edge (click)="mandarVoto(item)">
+                                    <ion-icon name="happy"></ion-icon>
+                                </ion-fab-button>
+                            </ion-fab>
+                        </div>
+                        <img [src]="item.url " style="text-align:center;" />
+
+                        <ion-card-header>
+                            <ion-card-subtitle>Usuario: {{ item.usuario }}</ion-card-subtitle>
+                            <ion-card-subtitle>Usuario: {{ item.yaVoto.length-1 }}</ion-card-subtitle>
+                        </ion-card-header>
+
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+</ion-app>

@@ -1,0 +1,43 @@
+<ion-header>
+
+    <ion-toolbar color="dark">
+        <ion-row>
+            <ion-col class="col-4">
+                <ion-button color="warning" (click)="elegirGrilla('ani')">
+                    Animales
+                </ion-button>
+            </ion-col>
+            <ion-col class="col-4">
+                <ion-button color="danger" (click)="elegirGrilla('col')">
+                    Colores
+                </ion-button>
+            </ion-col>
+            <ion-col class="col-4">
+                <ion-button color="light" (click)="elegirGrilla('num')">
+                    Numeros
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content color="dark" no-bounce>
+
+    <div *ngIf="spinner" class="animated fadeOut delay-2s" style=" margin-top: 200px;align-content: center; vertical-align: middle; height: 100vh; background-color: transparent ">
+        <lottie-animation-view [options]="lottieConfig" [width]="200" [height]="150">
+        </lottie-animation-view>
+    </div>
+
+    <div class="unGranDiv" style="height:85%; " *ngIf="animales">
+        <app-animales [idiomaSele]="idiomaSele"></app-animales>
+    </div>
+    <div class="unGranDiv" style="height:85%; " *ngIf="colores">
+        <app-colores [idiomaSele]="idiomaSele"></app-colores>
+    </div>
+    <div class="unGranDiv" style="height:85%; " *ngIf="numeros">
+        <app-numeros [idiomaSele]="idiomaSele"></app-numeros>
+    </div>
+    <app-idiomas (editarB)="recibirIdioma($event)"></app-idiomas>
+</ion-content>

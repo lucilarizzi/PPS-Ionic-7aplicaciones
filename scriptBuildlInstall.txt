@@ -1,0 +1,37 @@
+ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop1/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+&& ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop2/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+&& ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop3/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+&& ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop4/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+&& ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop5/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+
+
+
+cd luloop1 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop1/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop2 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop2/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop3 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop3/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop4 && ionic cordova build android  && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop4/platforms/android/app/build/outputs/apk/debug/app-debug.apk &&
+cd .. && cd luloop5 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop5/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop6 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop6/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop7 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop7/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd .. && cd luloop8 && ionic cordova build android && adb -s GUQ8F6WSAMGQ5TFE install -r  C:/Users/luloop/Desktop/PPS-TP1-Rizzi/5aplicaciones/luloop8/platforms/android/app/build/outputs/apk/debug/app-debug.apk && 
+cd ..
+
+
+         cd luloop1 &&  npm install animate.css --save &&
+cd .. && cd luloop2 &&  npm install animate.css --save &&
+cd .. && cd luloop3 &&  npm install animate.css --save &&
+cd .. && cd luloop4 &&  npm install animate.css --save &&
+cd .. && cd luloop5 &&  npm install animate.css --save &&
+cd .. && cd luloop6 &&  npm install animate.css --save &&
+cd .. && cd luloop7 &&  npm install animate.css --save &&
+cd .. && cd luloop8 &&  npm install animate.css --save &&
+cd ..
+         cd luloop1 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop2 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop3 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop4 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop5 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop6 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop7 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd .. && cd luloop8 && ionic cordova plugin add cordova-plugin-nativeaudio && npm install @ionic-native/native-audio &&
+cd ..

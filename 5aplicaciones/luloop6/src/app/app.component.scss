@@ -1,0 +1,51 @@
+path.rectText {
+    opacity: 0;
+}
+
+rect.rectBackground {
+    opacity: 0;
+}
+
+@keyframes textDraw {
+    0% {}
+    50% {}
+    100% {}
+}
+
+@keyframes rectFade {
+    from {}
+    to {}
+}
+
+rect.rectBackground {
+    opacity: 0;
+    animation: rectFade 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+@keyframes rectFade {
+    from {
+        width: 1%;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+path.rectText {
+    opacity: 0;
+    animation: textDraw 4s cubic-bezier(.56, -0.04, .32, .7) forwards;
+}
+
+path.rectText {
+    opacity: 0;
+    animation: textDraw 4s cubic-bezier(.56, -0.04, .32, .7) forwards;
+    animation-delay: 1s;
+}
+
+path.rectText {
+    opacity: 0;
+    stroke-dasharray: 735;
+    animation: textDraw 4s cubic-bezier(.56, -0.04, .32, .7) forwards;
+    animation-delay: 1s;
+}

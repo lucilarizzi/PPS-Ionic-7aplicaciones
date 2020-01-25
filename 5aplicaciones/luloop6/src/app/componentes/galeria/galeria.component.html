@@ -1,0 +1,14 @@
+<ion-app>
+    <ion-content color="dark" fullscreen padding scroll-y="false">
+        <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let item of itemsCopia">
+                <img [src]="item.url " style="text-align:center;" />
+                <ion-fab bottom right edge>
+                    <ion-fab-button top right edge (click)="mandarVoto(item)">
+                        <ion-icon name="happy"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab>
+            </ion-slide>
+        </ion-slides>
+    </ion-content>
+</ion-app>

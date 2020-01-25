@@ -1,0 +1,54 @@
+import { Component, OnInit } from '@angular/core';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Router } from '@angular/router';
+import { Observable, timer } from 'rxjs';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+
+
+@Component({
+  selector: 'app-splash',
+  templateUrl: './splash.page.html',
+  styleUrls: ['./splash.page.scss'],
+})
+export class SplashPage implements OnInit {
+
+  public lottieConfig: Object;
+
+  public showContent: boolean = false;
+  constructor(private nativeAudio: NativeAudio, public splashScreen: SplashScreen, private router: Router) {
+    this.lottieConfig = {
+      path: 'assets/ani/data.json',
+      loop: true
+    };
+
+  }
+
+  ngOnInit() {
+    this.nativeAudio.preloadSimple('splash', "assets/sonidos/142.mp3")
+  }
+
+  public resolve(): Observable<number> {
+    return timer(10000);
+  }
+
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.showContent = true;
+      this.splashScreen.hide();
+    }, 1800);
+    this.resolve();
+    this.nativeAudio.play('splash');
+    setTimeout(() => {
+      this.nativeAudio.unload('splash');
+      this.router.navigateByUrl("/home");
+      this.router.resetConfig([
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomePageModule) },
+        { path: 'hola', loadChildren: './hola/hola.module#HolaPageModule' },
+        { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' },
+        { path: 'cosasFeas', loadChildren: './pagina/cosas-feas/cosas-feas.module#CosasFeasPageModule' },
+        { path: 'cosasLindas', loadChildren: './pagina/cosas-lindas/cosas-lindas.module#CosasLindasPageModule' }]);
+    }, 2300);
+  }
+}
+

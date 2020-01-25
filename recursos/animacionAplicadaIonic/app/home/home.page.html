@@ -1,0 +1,66 @@
+<ion-content>
+    <ion-content color="dark" class="fadeIn">
+        <form #form="ngForm" (ngSubmit)="register(form)">
+            <ion-grid>
+                <ion-row justify-content-center justify-content-end>
+                    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                        <div id="logoAmarillo">
+                            <img id="luloop" src="../../assets/logo.png">
+                        </div>
+                        <div padding justify-content-end style="margin-top:20%">
+                            <ion-item>
+                                <ion-input type="text" placeholder="Usuario " name="username "
+                                    [(ngModel)]="miUsuario.email " required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-input type="text " placeholder="Password" name="psw" [(ngModel)]="miUsuario.clave"
+                                    required></ion-input>
+                            </ion-item>
+                        </div>
+                        <div class="botones" style="align-content: center">
+                            <ion-item text-center>
+                                <ion-button text-center color="warning" Primarytype="button" mdbWavesEffect item-content
+                                    (click)="onLogin()">Firebase</ion-button>
+                                <ion-button text-center color="success" Primarytype="button" mdbWavesEffect item-content
+                                    (click)="loguear()">Entrar</ion-button>
+                                <ion-button text-center color="medium" mdbWavesEffect (click)="vibrar2()">vibrar
+                                </ion-button>
+                                <ion-icon name="camera" style="color: pink;padding: 8pt" (click)="camara()"></ion-icon>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+                        <div class="login-container22">
+                            <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+                                <ion-fab-button>
+                                    <ion-icon name="arrow-dropup"></ion-icon>
+                                </ion-fab-button>
+
+                                <ion-fab-list side="end">
+                                    <ion-fab-button>
+                                        <ion-icon name="logo-octocat" id="gato" (click)="usuarioElegido('m')">
+                                        </ion-icon>
+
+                                    </ion-fab-button>
+
+                                    <ion-fab-button>
+                                        <ion-icon name="outlet" id="robot" (click)="usuarioElegido('b')"></ion-icon>
+
+                                    </ion-fab-button>
+
+                                    <ion-fab-button>
+                                        <ion-icon name="star" id="estrella" (click)="usuarioElegido('a')"></ion-icon>
+
+                                    </ion-fab-button>
+                                </ion-fab-list>
+                            </ion-fab>
+                        </div>
+                   
+                        <p *ngIf="error"> Clave Incorrecta</p>
+            
+    </ion-content>
+
+
+</ion-content>

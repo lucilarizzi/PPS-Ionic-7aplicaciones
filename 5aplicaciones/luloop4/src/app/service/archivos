@@ -1,0 +1,68 @@
+import { Injectable } from '@angular/core';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { USUARIOS } from '../clases/usuarios';
+import { Cosas } from '../clases/cosas';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ArchivosFirebaseService {
+
+  task: any;
+  aux: any;
+  docRefAux: any;
+
+  constructor(
+    private storage: AngularFireStorage,
+    private fireStore: AngularFirestore,
+  ) { }
+
+
+  //Referencia del archivo
+  public uploadAndroid(nombreArchivo: string, datos: any, tipo, usuario) {
+    this.fireStore.collection(tipo).add(JSON.parse(JSON.stringify(new Cosas(usuario, nombreArchivo, 0)))).then(function (docRef) {
+      this.docRefAux = docRef
+    });
+    return this.storage.ref(tipo + '/' + usuario + '_' + nombreArchivo);
+  }
+
+  //Tarea para subir archivo
+  public uploadWeb(event, tipo, usuario) {
+
+    var metadata
+    this.aux = event.target.files[0].name;
+
+    this.fireStore.collection(tipo).add(JSON.parse(JSON.stringify(new Cosas(usuario, this.aux, 0))))
+      .then(async function (docRef) {
+
+        console.info("docRef", docRef);
+         this.docRefAux= docRef.id;
+
+         metadata = {
+          contentType: 'image/jpeg',
+          nuevoMensaje: "lucila",
+          fecha: new Date().getDate(),
+          id: docRef.id
+ 
+        };
+      });
+
+    return this.storage.ref(tipo + '/' + usuario + '_' + this.aux).put(event.target.files[0], metadata);
+  }
+
+  public tareaCloudStorage(nombreArchivo: string, datos: any, tipo, usuario) {
+    return this.storage.upload(tipo + '/' + usuario + '_' + nombreArchivo, datos);
+  }
+
+
+  public referenc(tipo, usuario) {
+    return this.storage.ref(tipo + '/' + usuario + '_' + this.aux)
+  }
+
+
+
+
+
+}

@@ -1,0 +1,32 @@
+    .botonLindo,
+    .botonFeo {
+        min-width: 98%;
+        max-width: 98%;
+        min-height: 48%;
+        max-height: 48%;
+        background-color: rgb(187, 184, 184);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 5px;
+    }
+    
+    .botonFeo {
+        background-color: #b9007c
+    }
+    
+    .botonLindo {
+        background-color: #001d7e;
+    }
+    
+    .botonLindo:hover {
+        background-color: yellow;
+    }
+    
+    .botonFeo:hover {
+        background-color: rgb(4, 53, 5);
+        color: white;
+    }
+    
+    .botones {
+        height: 97vh;
+    }

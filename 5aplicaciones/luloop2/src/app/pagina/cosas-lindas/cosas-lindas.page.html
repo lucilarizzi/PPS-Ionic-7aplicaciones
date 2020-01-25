@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar justify-content-center>
+        <ion-title> <img class="col-6" id="luloop" src="../../../assets/titulo-int-11.png "></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="col" justify-content-center>
+        <ion-icon name="camera" style="color: rgb(80, 80, 80);padding: 8pt; zoom: 2;" (click)="camara()"></ion-icon>
+        <ion-icon name="albums" style="color: rgb(59, 56, 57);padding: 8pt; zoom: 2;" (click)="camara()"></ion-icon>
+        <ion-icon name="flash" style="color: green; padding: 8pt; zoom: 2;" (click)="luz()"></ion-icon>
+    </ion-row>
+
+    <div class="card" *ngIf="image">
+        <img src="{{image}}">
+        <img src="img_avatar.png" alt="Avatar" style="width:100%">
+        <div class="container">
+            <h4><b>John Doe</b></h4>
+            <p>Architect & Engineer</p>
+        </div>
+    </div>
+</ion-content>

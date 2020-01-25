@@ -1,0 +1,33 @@
+    .botonLindo,
+    .botonFeo {
+        height: 60%;
+        min-width: 98%;
+        max-width: 98%;
+        background-color: rgb(187, 184, 184);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 5px;
+    }
+    
+    .datosUsuario {
+        min-height: 48%;
+        max-height: 48%;
+        margin: 5px;
+    }
+    
+    .botonFeo {
+        background-color: #0fd64e
+    }
+    
+    .botonLindo {
+        background-color: #0a8d2b;
+    }
+    
+    .botonLindo:hover {
+        background-color: #00b771;
+    }
+    
+    .botonFeo:hover {
+        background-color: rgb(236, 222, 19);
+        color: white;
+    }
